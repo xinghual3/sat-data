@@ -32,6 +32,17 @@ public class Main {
     }
     double average = (double)total/totalScore.size();
     System.out.println(average + "is the average score.");
+
+
+
+    int above1400 = 0;
+    for(int score : totalScore) {
+      if(score>=1400) {
+        above1400++;
+      }
+    }
+    System.out.println(above1400 +" students got a score of 1400 or higher.");
+    
   }
 
 }
