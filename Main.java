@@ -7,6 +7,7 @@ public class Main {
 
     // create data structure to store all total scores
     ArrayList<Integer> totalScore = new ArrayList<Integer>();
+    ArrayList<Integer> totalMathScore = new ArrayList<Integer>();
     
     try{
       Scanner s = new Scanner(new File("total.txt"));
@@ -31,7 +32,7 @@ public class Main {
       total += score;
     }
     double average = (double)total/totalScore.size();
-    System.out.println(average + "is the average score.");
+    System.out.println(average + " is the average score.");
 
 
 
@@ -42,6 +43,36 @@ public class Main {
       }
     }
     System.out.println(above1400 +" students got a score of 1400 or higher.");
+
+    int min = 1600;
+    for(int score: totalScore) {
+      if(score<min) {
+        min = score;
+      }
+    }
+    System.out.println(min + " is the lowest score.");
+
+    int max = 0;
+    for(int score: totalScore) {
+      if(score>max) {
+        max = score;
+      }
+    }
+    System.out.println(max + " is the highest score.");
+
+    // take math score from math.txt
+    try{
+      Scanner s = new Scanner(new File("math.txt")); //Read math.txt
+      while(s.hasNext()){
+        int score = Integer.parseInt(s.nextLine());
+        totalMathScore.add(score);
+      }
+      s.close();
+    }
+    catch(Exception e){
+      System.out.println("file not found");
+    }
+
     
   }
 
