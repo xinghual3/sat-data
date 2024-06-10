@@ -8,6 +8,8 @@ public class Main {
     // create data structure to store all total scores
     ArrayList<Integer> totalScore = new ArrayList<Integer>();
     ArrayList<Integer> totalMathScore = new ArrayList<Integer>();
+    ArrayList<Integer> totalReadingScore = new ArrayList<Integer>();
+
     
     try{
       Scanner s = new Scanner(new File("total.txt"));
@@ -44,6 +46,14 @@ public class Main {
     }
     System.out.println(above1400 +" students got a score of 1400 or higher.");
 
+    int below600 = 0;
+    for(int score : totalScore) {
+      if(score<600) {
+        below600++;
+      }
+    }
+    System.out.println(below600 +" students got a score less than 600.");
+
     int min = 1600;
     for(int score: totalScore) {
       if(score<min) {
@@ -62,7 +72,7 @@ public class Main {
 
     // take math score from math.txt
     try{
-      Scanner s = new Scanner(new File("math.txt")); //Read math.txt
+      Scanner s = new Scanner(new File("math.txt")); 
       while(s.hasNext()){
         int score = Integer.parseInt(s.nextLine());
         totalMathScore.add(score);
@@ -72,6 +82,36 @@ public class Main {
     catch(Exception e){
       System.out.println("file not found");
     }
+
+
+    int mathTotal = 0;
+    for(int score : totalMathScore) {
+        mathTotal += score;
+    }
+    double mathAverage = (double)mathTotal/totalMathScore.size();
+    System.out.println(mathAverage + " is the average math score.");
+
+
+    // take reading score from reading.txt
+    try{
+      Scanner s = new Scanner(new File("reading.txt")); 
+      while(s.hasNext()){
+        int score = Integer.parseInt(s.nextLine());
+        totalReadingScore.add(score);
+      }
+      s.close();
+    }
+    catch(Exception e){
+      System.out.println("file not found");
+    }
+
+
+    int readingTotal = 0;
+    for(int score : totalReadingScore) {
+          readingTotal += score;
+    }
+    double readingAverage = (double)readingTotal/totalReadingScore.size();
+    System.out.println(readingAverage + " is the average reading score.");
 
     
   }
